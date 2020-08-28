@@ -9,7 +9,12 @@
 import SwiftUI
 
 struct TaskDetail: View {
+    @EnvironmentObject var userData: UserData
     var task: Task
+    
+    var taskIndex: Int {
+        userData.tasks.firstIndex(where: {$0.self == task.self})!
+    }
     
     var body: some View {
         let formatter = DateFormatter()
@@ -58,6 +63,6 @@ struct TaskDetail: View {
 
 struct TaskDetail_Previews: PreviewProvider {
     static var previews: some View {
-        TaskDetail(task: taskData[1])
+        TaskDetail(task: taskData[1]).environmentObject(UserData())
     }
 }

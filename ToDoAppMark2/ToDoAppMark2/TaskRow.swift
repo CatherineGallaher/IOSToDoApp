@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct TaskRow: View {
+    @EnvironmentObject var userData: UserData
     var task: Task
 
     var body: some View {
@@ -16,11 +17,15 @@ struct TaskRow: View {
         formatter.dateStyle = .short
         let date = formatter.string(from: task.dueDate)
         return HStack {
-            if task.complete {
-                Image("checkBoxFILLED ")
-            }
-            else {
-                Image("checkBoxOUTLINE ")
+            Button(action: {
+                self.userData.tasks[0].complete.toggle()
+            }) {
+                if task.complete {
+                    Image("checkBoxFILLED ")
+                }
+                else {
+                    Image("checkBoxOUTLINE ")
+                }
             }
             VStack(alignment: .leading) {
                 HStack {

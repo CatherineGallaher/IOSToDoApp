@@ -16,7 +16,7 @@ struct TagView: View {
             .multilineTextAlignment(.leading)
             .padding(.horizontal, 15)
             .padding(.vertical, 3)
-            .border(/*@START_MENU_TOKEN@*/Color.gray/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/3/*@END_MENU_TOKEN@*/)
+            .border(/*@START_MENU_TOKEN@*/Color.gray/*@END_MENU_TOKEN@*/, width: 2)
             .background(Color(hue: 0.5, saturation: 0.039, brightness: 0.834))
             .cornerRadius(5)
 

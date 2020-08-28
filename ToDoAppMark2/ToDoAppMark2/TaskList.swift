@@ -6,14 +6,15 @@
 //  Copyright © 2020 Catherine Gallaher. All rights reserved.
 //
 
-import SwiftUI  
+import SwiftUI
 
 struct TaskList: View {
     //@State var isComplete = false
+    @EnvironmentObject var userData: UserData
     var body: some View {
         NavigationView {
             List{
-                ForEach(taskData, id: \.self) {task in
+                ForEach(userData.tasks, id: \.self) {task in
                     NavigationLink(destination: TaskDetail(task: task)){
                         TaskRow(task: task)
                     }
@@ -27,7 +28,7 @@ struct TaskList: View {
 struct TaskList_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(["iPhone SE", "iPhone 11 Pro", "iPad (7th generation)"], id: \.self) { deviceName in
-            TaskList()
+            TaskList().environmentObject(UserData())
                 .previewDevice(PreviewDevice(rawValue: deviceName))
                 .previewDisplayName(deviceName)
         }
